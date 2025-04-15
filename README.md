@@ -41,6 +41,8 @@ MIX_ENV=test mix ecto.setup
 MIX_ENV=test mix test
 ```
 
+Just a note: Local development, tests, and benchmarking will expect to connect to Postgres on port 5432 and have the correct databases. The docker deploy includes a Postgres server but its port is not mapped to localhost. 
+
 ---
 
 ## 📈 Benchmarking

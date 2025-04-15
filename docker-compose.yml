@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: shrtnr_dev
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: ecto://postgres:postgres@db/shrtnr_dev
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
